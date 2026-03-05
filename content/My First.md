@@ -5,3 +5,4 @@ tags:
   - 
 ---
  Bla Bla
+ apple <audio id="apple" src="/audio/apple.mp3"></audio><a onclick="document.getElementById('apple').play()" style="cursor:pointer">🔊</a>
