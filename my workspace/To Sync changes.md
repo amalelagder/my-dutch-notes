@@ -10,4 +10,6 @@
 hint: exit with **ctrl+c**. You get a: **Terminate batch job (Y/N)?** 
 
 # 3. Sync to GitHub
-To sync to GitHub: npx quartz sync
+1. To sync to GitHub: npx quartz sync
+2. hint: make sure all GitHub Actions are green before opening the website
+3. Open https://amalelagder.github.io/my-dutch-notes/

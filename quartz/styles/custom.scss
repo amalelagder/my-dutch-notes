@@ -16,3 +16,53 @@ article td,
 article th {
   text-align: start;
 }
+
+
+.two-col-table {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.two-col-table tr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+}
+
+.two-col-table td {
+  border: none;
+  border-bottom: 1px solid #cfe8ff; /* light blue */
+  padding-top: 0.6rem;
+  padding-bottom: 0.3rem; /* half of top */
+  vertical-align: top;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+
+
+
+
+
+/////
+
+
+.three-col-table {
+  width: 95%;
+}
+
+.three-col-table tr {
+  display: grid;
+  grid-template-columns: 2.25fr 2fr 5.75fr; /* 2:2:6 ratio */
+  column-gap: 2rem; /* space between columns */
+}
+
+.three-col-table td {
+  border: none;
+  border-bottom: 1px solid #cfe8ff; /* light blue */
+  
+  vertical-align: top;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+
