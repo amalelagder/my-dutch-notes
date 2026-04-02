@@ -54,3 +54,4 @@ export {
 
 
 export { default as BidiAuto } from "./BidiAuto"
+export { default as AudioButtons } from "./AudioButtons"

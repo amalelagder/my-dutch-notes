@@ -1,68 +1,239 @@
 @use "./base.scss";
-
 // put your custom CSS here!
 
-// to keep right and left directions 
-article p,
-article li,
-article h1,
-article h2,
-article h3,
-article h4,
-article h5,
-article h6,
-article blockquote,
-article td,
-article th {
-  text-align: start;
+/* audio play */
+
+.play {
+    cursor: pointer;
+    margin-left: 0.25em;
+}
+
+audio {
+    display: none;
 }
 
 
+/* keep right/left directions natural */
+
+article :is(p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th) {
+    text-align: start;
+}
+
+
+/* ---------- tables: shared ---------- */
+
+.two-col-table,
+.three-col-table,
+.custom-3col-table,
+.equal-3col-table {
+    width: 96%;
+}
+
+.two-col-table td,
+.three-col-table td,
+.custom-3col-table td,
+.custom-3col-table th,
+.equal-3col-table td,
+.equal-3col-table th {
+    vertical-align: top;
+    overflow-wrap: anywhere;
+}
+
+
+/* ---------- 2 column table ---------- */
+
 .two-col-table {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .two-col-table tr {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
 }
 
 .two-col-table td {
-  border: none;
-  border-bottom: 1px solid #cfe8ff; /* light blue */
-  padding-top: 0.6rem;
-  padding-bottom: 0.3rem; /* half of top */
-  vertical-align: top;
-  text-align: start;
-  overflow-wrap: anywhere;
+    border: none;
+    border-bottom: 1px solid #cfe8ff;
+    padding-top: 0.6rem;
+    padding-bottom: 0.3rem;
+    text-align: start;
 }
 
 
+/* ---------- 3 column table ---------- */
 
-
-
-/////
-
+.three-col-table,
+.three-col-table :is(tbody, tr, td, th) {
+    border: none !important;
+}
 
 .three-col-table {
-  width: 95%;
+    margin-left: 0;
+    margin-right: 0;
+    border-collapse: separate;
+    border-spacing: 0;
 }
 
 .three-col-table tr {
-  display: grid;
-  grid-template-columns: 2.25fr 2fr 5.75fr; /* 2:2:6 ratio */
-  column-gap: 2rem; /* space between columns */
+    display: grid;
+    grid-template-columns: 2.5fr 2.25fr 4.75fr;
+    column-gap: 1.5rem;
 }
 
 .three-col-table td {
-  border: none;
-  border-bottom: 1px solid #cfe8ff; /* light blue */
-  
-  vertical-align: top;
-  text-align: start;
-  overflow-wrap: anywhere;
+    box-shadow: inset 0 -1px 0 #cfe8ff;
+    text-align: start;
 }
 
+
+/* ---------- custom 3 column table ---------- */
+
+.custom-3col-table,
+.custom-3col-table td,
+.custom-3col-table th,
+.equal-3col-table,
+.equal-3col-table td,
+.equal-3col-table th {
+    border-left: none;
+    border-right: none;
+}
+
+.custom-3col-table {
+    border: 2px solid #cfe8ff;
+    border-radius: 6px;
+    border-collapse: separate;
+    border-spacing: 2rem 0;
+}
+
+.custom-3col-table th,
+.custom-3col-table td,
+.equal-3col-table th,
+.equal-3col-table td {
+    padding: 0.75rem 0.5rem;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+}
+
+.custom-3col-table th,
+.custom-3col-table td {
+    text-align: left;
+}
+
+.custom-3col-table thead th,
+.equal-3col-table thead th {
+    font-weight: 700;
+    border-bottom: 2px solid #cfe8ff;
+}
+
+.custom-3col-table tbody td,
+.equal-3col-table tbody td {
+    border-bottom: 1px solid #cfe8ff;
+}
+
+
+/* ---------- equal 3 column table ---------- */
+
+.equal-3col-table {
+    border: 2px solid #cfe8ff;
+    border-radius: 6px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.equal-3col-table th,
+.equal-3col-table td {
+    text-align: left;
+    border-right: 1px solid #cfe8ff;
+}
+
+.equal-3col-table th:last-child,
+.equal-3col-table td:last-child {
+    border-right: none;
+}
+
+.equal-3col-table td ul {
+    margin: 0.4rem 0;
+    padding-left: 1.2rem;
+}
+
+.equal-3col-table td li {
+    margin: 0.2rem 0;
+}
+
+
+/* ---------- spacing tweaks ---------- */
+
+article p {
+    margin-bottom: 0.2rem !important;
+}
+
+article :is(ul, ol) {
+    margin-top: 0.2rem !important;
+    padding-inline-start: 1.2rem;
+    padding-inline-end: 1.2rem;
+    list-style-position: inside;
+    text-align: start;
+}
+
+article li {
+    text-align: start;
+    unicode-bidi: plaintext;
+}
+
+
+/* ---------- misc ---------- */
+
+article br {
+    line-height: 1 !important;
+}
+
+// page title size
+.page-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+article h1 {
+    margin-top: 0.6rem;
+}
+
+.article-title {
+    font-size: 2.35rem;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.pronoun-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pronoun-table th,
+.pronoun-table td {
+    text-align: center;
+    border-bottom: 1px solid #cfe8ff;
+}
+
+.dialogue {
+    max-width: 700px;
+}
+
+.dialogue .line {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 4px;
+}
+
+.dialogue .speaker {
+    width: 90px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.dialogue .text {
+    flex: 1;
+}

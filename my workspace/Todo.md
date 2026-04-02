@@ -1,4 +1,6 @@
-- اشوف حوار الـthemes. أعتقد اللي عاجبني اسمه Things
-to add themes to quartz [saberzero1/quartz-themes: Obsidian 🤝 Quartz. Quartz-compatible Obsidian themes.](https://github.com/saberzero1/quartz-themes?tab=readme-ov-file#installation)
++ اشوف حوار الـthemes. أعتقد اللي عاجبني اسمه Things
+
 
 - اختار layout معقول لترتيب الصفحة
+- محتاجة اعمل dectionary لألفاظي فنقول مثلا ملحوظة متقدمة لو حد hover توريه أن المقصود منها للمبتديء القراءة لو فهم تمام، لو مفهمش عدي ويرجع لها لما يتقدم شوية في اللغة.
+- 
