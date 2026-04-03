@@ -5,7 +5,7 @@
 4. Write `cd my-dutch-notes` to reach the quartz file
 
 # 2. Test everything local first
-1. Write: `npx quartz build --serve`
+1. Write: npx quartz build --serve
 2. Open:  http://localhost:8080
 hint: exit with **ctrl+c**. You get a: **Terminate batch job (Y/N)?** 
 
