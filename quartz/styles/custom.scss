@@ -1,32 +1,74 @@
 @use "./base.scss";
-// put your custom CSS here!
 
-/* audio play */
+/* ------------------ audio ------------------ */
 
+/* only style your custom play trigger */
 .play {
-    cursor: pointer;
-    margin-left: 0.25em;
+  cursor: pointer;
+  margin-inline-start: 0.25em;
 }
 
-audio {
-    display: none;
+/* DO NOT hide Quartz audio embeds */
+article audio,
+.popover audio {
+  display: block;
+  width: 100%;
+  margin: 0.4rem 0;
 }
 
+/* ------------------ bidi / RTL ------------------ */
 
-/* keep right/left directions natural */
-
-article :is(p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th) {
-    text-align: start;
+/* apply the same text behavior to both page content and popover previews */
+article,
+.popover,
+.popover-inner {
+  text-align: start;
 }
 
+/* block-level text: keep mixed RTL/LTR runs stable */
+article :is(p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th),
+.popover-inner :is(p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th) {
+  text-align: start;
+  unicode-bidi: plaintext;
+}
 
-/* ---------- tables: shared ---------- */
+/* lists */
+article :is(ul, ol),
+.popover-inner :is(ul, ol) {
+  margin-top: 0.2rem !important;
+  padding-inline-start: 1.2rem;
+  padding-inline-end: 1.2rem;
+  list-style-position: inside;
+  text-align: start;
+}
+
+article li,
+.popover-inner li {
+  text-align: start;
+  unicode-bidi: plaintext;
+}
+
+/* links inside mixed-direction text */
+article a,
+.popover-inner a {
+  unicode-bidi: plaintext;
+}
+
+/* optional: if your whole site is primarily RTL, uncomment this */
+/*
+article,
+.popover-inner {
+  direction: rtl;
+}
+*/
+
+/* ------------------ your existing table rules ------------------ */
 
 .two-col-table,
 .three-col-table,
 .custom-3col-table,
 .equal-3col-table {
-    width: 96%;
+  width: 96%;
 }
 
 .two-col-table td,
@@ -35,61 +77,52 @@ article :is(p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th) {
 .custom-3col-table th,
 .equal-3col-table td,
 .equal-3col-table th {
-    vertical-align: top;
-    overflow-wrap: anywhere;
+  vertical-align: top;
+  overflow-wrap: anywhere;
 }
 
-
-/* ---------- 2 column table ---------- */
-
 .two-col-table {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .two-col-table tr {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
 }
 
 .two-col-table td {
-    border: none;
-    border-bottom: 1px solid #cfe8ff;
-    padding-top: 0.6rem;
-    padding-bottom: 0.3rem;
-    text-align: start;
+  border: none;
+  border-bottom: 1px solid #cfe8ff;
+  padding-top: 0.6rem;
+  padding-bottom: 0.3rem;
+  text-align: start;
 }
-
-
-/* ---------- 3 column table ---------- */
 
 .three-col-table,
 .three-col-table :is(tbody, tr, td, th) {
-    border: none !important;
+  border: none !important;
 }
 
 .three-col-table {
-    margin-left: 0;
-    margin-right: 0;
-    border-collapse: separate;
-    border-spacing: 0;
+  margin-left: 0;
+  margin-right: 0;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 .three-col-table tr {
-    display: grid;
-    grid-template-columns: 2.5fr 2.25fr 4.75fr;
-    column-gap: 1.5rem;
+  display: grid;
+  grid-template-columns: 2.5fr 2.25fr 4.75fr;
+  column-gap: 1.5rem;
 }
 
 .three-col-table td {
-    box-shadow: inset 0 -1px 0 #cfe8ff;
-    text-align: start;
+  box-shadow: inset 0 -1px 0 #cfe8ff;
+  text-align: start;
 }
-
-
-/* ---------- custom 3 column table ---------- */
 
 .custom-3col-table,
 .custom-3col-table td,
@@ -97,143 +130,121 @@ article :is(p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th) {
 .equal-3col-table,
 .equal-3col-table td,
 .equal-3col-table th {
-    border-left: none;
-    border-right: none;
+  border-left: none;
+  border-right: none;
 }
 
 .custom-3col-table {
-    border: 2px solid #cfe8ff;
-    border-radius: 6px;
-    border-collapse: separate;
-    border-spacing: 2rem 0;
+  border: 2px solid #cfe8ff;
+  border-radius: 6px;
+  border-collapse: separate;
+  border-spacing: 2rem 0;
 }
 
 .custom-3col-table th,
 .custom-3col-table td,
 .equal-3col-table th,
 .equal-3col-table td {
-    padding: 0.75rem 0.5rem;
-    vertical-align: top;
-    overflow-wrap: anywhere;
+  padding: 0.75rem 0.5rem;
+  vertical-align: top;
+  overflow-wrap: anywhere;
 }
 
 .custom-3col-table th,
-.custom-3col-table td {
-    text-align: left;
+.custom-3col-table td,
+.equal-3col-table th,
+.equal-3col-table td {
+  text-align: start;
 }
 
 .custom-3col-table thead th,
 .equal-3col-table thead th {
-    font-weight: 700;
-    border-bottom: 2px solid #cfe8ff;
+  font-weight: 700;
+  border-bottom: 2px solid #cfe8ff;
 }
 
 .custom-3col-table tbody td,
 .equal-3col-table tbody td {
-    border-bottom: 1px solid #cfe8ff;
+  border-bottom: 1px solid #cfe8ff;
 }
 
-
-/* ---------- equal 3 column table ---------- */
-
 .equal-3col-table {
-    border: 2px solid #cfe8ff;
-    border-radius: 6px;
-    border-collapse: collapse;
-    table-layout: fixed;
+  border: 2px solid #cfe8ff;
+  border-radius: 6px;
+  border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .equal-3col-table th,
 .equal-3col-table td {
-    text-align: left;
-    border-right: 1px solid #cfe8ff;
+  border-right: 1px solid #cfe8ff;
 }
 
 .equal-3col-table th:last-child,
 .equal-3col-table td:last-child {
-    border-right: none;
+  border-right: none;
 }
 
 .equal-3col-table td ul {
-    margin: 0.4rem 0;
-    padding-left: 1.2rem;
+  margin: 0.4rem 0;
+  padding-inline-start: 1.2rem;
 }
 
 .equal-3col-table td li {
-    margin: 0.2rem 0;
+  margin: 0.2rem 0;
 }
-
-
-/* ---------- spacing tweaks ---------- */
 
 article p {
-    margin-bottom: 0.2rem !important;
+  margin-bottom: 0.2rem !important;
 }
-
-article :is(ul, ol) {
-    margin-top: 0.2rem !important;
-    padding-inline-start: 1.2rem;
-    padding-inline-end: 1.2rem;
-    list-style-position: inside;
-    text-align: start;
-}
-
-article li {
-    text-align: start;
-    unicode-bidi: plaintext;
-}
-
-
-/* ---------- misc ---------- */
 
 article br {
-    line-height: 1 !important;
+  line-height: 1 !important;
 }
 
-// page title size
 .page-title {
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: 0.4rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
 }
 
 article h1 {
-    margin-top: 0.6rem;
+  margin-top: 0.6rem;
 }
 
 .article-title {
-    font-size: 2.35rem;
-    line-height: 1.2;
-    font-weight: 700;
+  font-size: 2.35rem;
+  line-height: 1.2;
+  font-weight: 700;
 }
 
 .pronoun-table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .pronoun-table th,
 .pronoun-table td {
-    text-align: center;
-    border-bottom: 1px solid #cfe8ff;
+  text-align: center;
+  border-bottom: 1px solid #cfe8ff;
 }
 
 .dialogue {
-    max-width: 700px;
+  max-width: 700px;
 }
 
 .dialogue .line {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 4px;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 4px;
 }
 
 .dialogue .speaker {
-    width: 90px;
-    font-weight: bold;
-    flex-shrink: 0;
+  width: 90px;
+  font-weight: bold;
+  flex-shrink: 0;
 }
 
 .dialogue .text {
-    flex: 1;
+  flex: 1;
 }
